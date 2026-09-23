@@ -1,5 +1,7 @@
 # Dynasearch – eine Suche, die mehrere unabhängige Züge auf einmal kombiniert – Streamlit-Demo
 
+**[→ Demo live ausprobieren](https://sebastianhanisch-dynasearch-demo.streamlit.app/)**
+
 Achtes Stück der **Trajektorien-Metaheuristiken-Linie** der "Konzepte"-Reihe für die Website "Sebastian Hanisch – Operations Research und Machine Learning", zweites Stück des **Nachbarschafts-Zweigs**:
 dieselbe Rundtour wie in der [hill-climbing-demo](../hill-climbing-demo), der [simulated-annealing-demo](../simulated-annealing-demo), der [iterated-local-search-demo](../iterated-local-search-demo), der [variable-neighborhood-search-demo](../variable-neighborhood-search-demo), der [tabu-search-demo](../tabu-search-demo), der [grasp-demo](../grasp-demo) und der [lin-kernighan-demo](../lin-kernighan-demo) (ein Depot, n Kundenstopps in einem 100 × 100-km-Gebiet), dieselbe untere Schranke.
 
