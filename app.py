@@ -414,8 +414,8 @@ with st.expander("📐 Mathematische Formulierung"):
 **2-opt-Zug.** Ein Zug $(i,j)$ entfernt die Kanten $(t_i,t_{i+1})$ und $(t_j,t_{j+1})$, fügt $(t_i,t_j)$ und $(t_{i+1},t_{j+1})$ ein
 (Stück zwischen $i+1$ und $j$ umgekehrt); referenziert die vier Positionen $i, i+1, j, j+1$.
 
-**Unabhängigkeit.** Zwei Züge $(i_1,j_1)$ und $(i_2,j_2)$ mit $i_1 < i_2$ sind unabhängig genau dann, wenn $i_2 \ge j_1 + 2$ (ihre
-Fußabdrücke $[i,j+1]$ überlappen sich nicht) - dann ist der Gesamtgewinn additiv: $\Delta(\pi, \{\text{Zug}_1,\text{Zug}_2\}) =
+**Unabhängigkeit.** Zwei Züge $(i_1,j_1)$ und $(i_2,j_2)$ mit $i_1 < i_2$ gelten hier als unabhängig, wenn $i_2 \ge j_1 + 2$ (ihre
+Fußabdrücke $[i,j+1]$ überlappen sich nicht; eine hinreichende, bewusst konservative Regel - auch bei $i_2 = j_1 + 1$ wären die Deltas additiv) - dann ist der Gesamtgewinn additiv: $\Delta(\pi, \{\text{Zug}_1,\text{Zug}_2\}) =
 \Delta(\pi,\text{Zug}_1) + \Delta(\pi,\text{Zug}_2)$.
 
 **Dynasearch-DP.** Gesucht die gewinn-maximale Menge paarweise unabhängiger, verbessernder Züge (Züge, die Position 0

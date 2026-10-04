@@ -46,7 +46,8 @@ def dynasearch_step(t, D):
     Fußabdrücke [i,j+1] sich nicht überlappen UND nicht berühren (sonst läse der zweite Zug eine Position, die der
     erste bereits verändert hat - siehe tests/test_algorithm.py für den Fehler, den eine zu lockere Bedingung
     (nur das umgekehrte Stück, nicht den vollen Fußabdruck) tatsächlich verursacht hat). Konkret: zwei Züge mit
-    i1 < i2 sind unabhängig genau dann, wenn i2 >= j1 + 2. Wie in der Literatur (Potts & van de Velde 1995: "moves
+    i1 < i2 gelten hier als unabhängig, wenn i2 >= j1 + 2 (hinreichend und bewusst konservativ: ein bloßes Berühren
+    bei i2 = j1 + 1 wäre noch additiv, ein Überlappen i2 <= j1 nicht). Wie in der Literatur (Potts & van de Velde 1995: "moves
     that do not involve city 1") werden Züge, die Position 0 (das Depot) referenzieren, deshalb komplett
     ausgeschlossen (i >= 1 UND j <= n-2, damit auch j+1 nie auf Position 0 zurückwickelt) - macht die Tour für die
     DP zu einer linearen Kette 0..n-1 statt eines Zyklus, ohne Sonderfall für den Wickel-Übergang."""
