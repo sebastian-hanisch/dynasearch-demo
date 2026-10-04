@@ -396,12 +396,12 @@ st.markdown(
 | **Die Instanz ist klein bis mittelgroß** | Bei festem 200-Tausend-Budget gewinnt Dynasearch bis 60 Stopps klar, verliert aber ab 100 Stopps knapp gegen sequentiell (9.74 % gegen 8.78 % bei 100 Stopps, 10.03 % gegen 9.56 % bei 200) - ein einzelner Dynasearch-Abstieg findet bei großen Instanzen ein leicht schlechteres Lokaloptimum als ein einzelner sequentieller. | Mehr Budget (der Umschlagpunkt verschiebt sich nach hinten, kehrt sich aber auch dann irgendwann um) |
 | **Genug Bewertungen für mehr als einen Neustart** | Bei sehr großen Instanzen und knappem Budget passt für beide Verfahren kaum ein Neustart - dann zählt nur die Güte EINES Abstiegs, nicht mehr die Effizienz-Ersparnis von Dynasearch. | (kein Nachfolger nötig - dieselbe Lehre wie bei jedem restart-basierten Stück dieser Linie) |
 | **Kein Zug referenziert das Depot** | Die DP schließt Züge, die Position 0 betreffen, bewusst aus (wie im Original-Paper) - ohne den anschließenden sequentiellen Aufräum-Durchgang wäre das Ergebnis KEIN echtes 2-opt-Lokaloptimum (geprüft, siehe Tests). | (kein Nachfolger nötig - der Aufräum-Durchgang behebt es vollständig) |
-| **Nur 2-opt-Züge, keine Or-opt-Kombination** | Die Unabhängigkeits-DP ist nur für 2-opt-Segmentumkehrungen hergeleitet; eine Erweiterung auf Or-opt-Züge bräuchte eine eigene Kompatibilitäts-Definition - bewusst nicht umgesetzt. | **VRP-Nachbarschaften** (inter-route-Züge, sobald CVRP-Infrastruktur existiert) |
+| **Nur 2-opt-Züge, keine Or-opt-Kombination** | Die Unabhängigkeits-DP ist nur für 2-opt-Segmentumkehrungen hergeleitet; eine Erweiterung auf Or-opt-Züge bräuchte eine eigene Kompatibilitäts-Definition - bewusst nicht umgesetzt. | **VRP-Nachbarschaften** (inter-route-Züge; vrp-nachbarschaften-demo, gebaut) |
 """
 )
 st.caption(
-    "Die Nachbarn des Nachbarschafts-Zweigs: VRP-Nachbarschaften (inter-route-Züge) setzen auf Dynasearch und Lin-Kernighan auf, sobald CVRP-Infrastruktur existiert; "
-    "ALNS ist der Konvergenzpunkt mit VNS."
+    "Die Nachbarn des Nachbarschafts-Zweigs: VRP-Nachbarschaften (inter-route-Züge) setzen auf Dynasearch und Lin-Kernighan auf (CVRP-Infrastruktur steht, vrp-nachbarschaften-demo ist gebaut); "
+    "ALNS ist der Konvergenzpunkt mit VNS (alns-demo, gebaut)."
 )
 
 st.markdown("---")
@@ -445,6 +445,6 @@ aus der Hill-Climbing-Demo), `dyna_scenario.py` (Instanzen), `dyna_evaluation.py
 st.markdown("---")
 st.caption(
     "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
-    "Operations Research und Machine Learning. Interesse an einer maßgeschneiderten Lösung für "
-    "Ihr Unternehmen? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html)"
+    "Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). "
+    "Mehr zur Reihe: [Trajektorien-Metaheuristiken: HC bis ALNS](https://sebastianhanisch.net/konzepte-trajektorien-metaheuristiken.html)."
 )

@@ -68,7 +68,7 @@ PRESETS = {
 PRESET_HELP = {
     "Standardfall (Voreinstellung)": "60 Stopps, Dynasearch, 200 Tausend Vorschläge: die beste Tour liegt im Mittel 3.75 % über der Schranke - sequentielles bestes-Verbesserung-2-opt bei gleichem Budget 6.33 %.",
     "Sequentiell statt Dynasearch": "Derselbe Vergleich aus der anderen Perspektive: sequentiell 6.33 % über der Schranke gegen 3.75 % für Dynasearch - jede Iteration wendet hier nur EINEN statt mehrerer Züge an.",
-    "Zu kleines Budget (10 Tausend)": "Nur 10 Tausend Vorschläge reichen für genau einen Abstieg: Dynasearch gewinnt trotzdem klar (5.81 % gegen 7.85 %) - schon EIN Dynasearch-Abstieg braucht weniger Bewertungen bis zur Konvergenz als ein sequentieller.",
+    "Zu kleines Budget (10 Tausend)": "Schon ein einziger Abstieg braucht mehr als 10 Tausend Bewertungen (Dynasearch im Mittel rund 50 Tausend, sequentiell rund 100 Tausend); der erste Abstieg läuft aber immer zu Ende, also gibt es genau einen. Dynasearch gewinnt trotzdem klar (5.81 % gegen 7.85 %) - schon EIN Dynasearch-Abstieg braucht weniger Bewertungen bis zur Konvergenz als ein sequentieller.",
     "Großes Budget (1 Million)": "1 Million Vorschläge erlauben rund 21 Dynasearch-Neustarts gegen 10 sequentielle: 1.93 % gegen 2.58 % über der Schranke - der Vorsprung bleibt bei jedem gemessenen Budget bestehen.",
     "Große Instanz (200 Stopps)": "200 Stopps, 200 Tausend Vorschläge: sequentiell liegt hier VORN (9.56 % gegen 10.03 % für Dynasearch) - bei so wenig Budget pro Stopp passt kaum ein Neustart, und das von Dynasearch erreichte Lokaloptimum ist bei großen Instanzen leicht schlechter (ehrlicher Negativbefund, siehe README).",
 }

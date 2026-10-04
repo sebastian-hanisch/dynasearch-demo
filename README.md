@@ -16,7 +16,7 @@ hill-climbing-demo (Wurzel: nur bergab, bleibt im ersten Optimum stecken)       
   └─ Nachbarschafts-Zweig
         ├─ lin-kernighan-demo (variable Tiefe statt fixer 2-opt-Nachbarschaft)  [gebaut]
         └─ dynasearch-demo (viele unabhängige Züge auf einmal statt einer)      [dieses Stück]
-              └─ VRP-Nachbarschaften (inter-route-Züge)                        [nicht gebaut]
+              └─ VRP-Nachbarschaften (inter-route-Züge)                        [gebaut: vrp-nachbarschaften-demo]
 ```
 
 Ergebnis in Kürze: **Dynasearch braucht bei EINEM Abstieg immer deutlich weniger Bewertungen bis zur Konvergenz als sequentielles bestes-Verbesserung-2-opt (2.0x bei 20 Stopps, wachsend auf 3.9x bei 200 Stopps) und gewinnt den restart-basierten Budget-Vergleich bei JEDEM gemessenen Budget (10 Tausend bis 2 Millionen) klar** - die durchgehendste, am wenigsten von Umschlagpunkten unterbrochene Budget-Geschichte der ganzen Linie. Aber ein ehrlicher, nicht-monotoner Zweitbefund: die GÜTE des von einem einzelnen Abstieg erreichten Lokaloptimums dreht sich mit der Instanzgröße um - bei kleinen/mittleren Instanzen (bis 60 Stopps) findet Dynasearch das bessere Optimum, ab etwa 80 Stopps ist sequentiell leicht genauer. Bei FESTEM Budget (200 Tausend) schlägt das durch: Dynasearch gewinnt klar bis 60 Stopps, verliert aber ab 100 Stopps knapp - bei so wenig Budget pro Stopp passt für beide kaum ein Neustart, und dann zählt nur noch die (bei großen Instanzen leicht schlechtere) Qualität eines einzelnen Dynasearch-Abstiegs.
@@ -24,7 +24,7 @@ Ergebnis in Kürze: **Dynasearch braucht bei EINEM Abstieg immer deutlich wenige
 | Frage | Ergebnis (60 gleichverteilte Stopps, 200 Tausend Vorschläge, sofern nicht anders angegeben; Mittel über 5 feste Instanzen, Seeds 100000–100004, mit je 3 Ketten-Seeds; Abstand = Prozent über der 1-Baum-Schranke) |
 |---|---|
 | Standardfall | ✅ Dynasearch **3.75 %** über der Schranke gegen **6.33 %** für sequentiell (gleiches Budget) - klarer Sieg |
-| **Budget-Sweep (Dynasearch gegen sequentiell)** | ✅ 10T-50T: **5.81/7.85 %** (Dynasearch konvergiert, sequentiell noch nicht). 100T: **4.67/7.85 %**. 500T: **2.69/3.98 %**. 1M: **1.93/2.58 %**. 2M: **1.25/1.91 %** - Dynasearch gewinnt bei JEDEM gemessenen Budget klar |
+| **Budget-Sweep (Dynasearch gegen sequentiell)** | ✅ 10T-50T: **5.81/7.85 %** (in beiden Modi nur der eine erste Abstieg, der immer zu Ende läuft: rund 50 Tausend Bewertungen bei Dynasearch, rund 100 Tausend sequentiell). 100T: **4.67/7.85 %**. 500T: **2.69/3.98 %**. 1M: **1.93/2.58 %**. 2M: **1.25/1.91 %** - Dynasearch gewinnt bei JEDEM gemessenen Budget klar |
 | **Ein einzelner Abstieg: Bewertungen bis Konvergenz** | ✅ n=20: **2961/3301** (1.1x). n=60: **50122/101776** (2.0x). n=100: **182123/517665** (2.8x). n=200: **1126283/4438804** (3.9x) - Dynasearch IMMER weniger, der Faktor wächst mit n |
 | **Ein einzelner Abstieg: erreichte Güte** | ⚠️ n=20: **0.60/1.85 %** (Dynasearch besser). n=60: **5.81/7.85 %** (Dynasearch besser). n=100: **9.74/8.78 %** (sequentiell besser). n=200: **10.03/9.56 %** (sequentiell besser) - dreht sich ab ~80 Stopps |
 | **Skalierung bei festem Budget (200 Tausend)** | ⚠️ n=20/40/60: Dynasearch gewinnt klar (0.05/0.05, 1.02/1.04, 3.75/6.33 %). AB n=100: sequentiell gewinnt (9.74/8.78, 10.10/9.49, **10.03/9.56 %** bei n=200) |
@@ -110,6 +110,4 @@ pytest tests/ -v
 
 ---
 
-Teil des [Operations-Research-Demo-Portfolios](https://sebastianhanisch.net/demos.html) von
-[Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning.
-Interesse an einer maßgeschneiderten Lösung? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html).
+Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zur Reihe: [Trajektorien-Metaheuristiken: HC bis ALNS](https://sebastianhanisch.net/konzepte-trajektorien-metaheuristiken.html).
