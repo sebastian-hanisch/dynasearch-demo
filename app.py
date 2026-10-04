@@ -121,7 +121,7 @@ with st.expander("So funktioniert Dynasearch", expanded=True):
    Intervall-Scheduling-Problem, exakt lösbar in O(n²).
 4. **Alle gleichzeitig anwenden.** Die gewählte Menge wird auf einmal angewandt (Reihenfolge egal, da unabhängig) -
    das kann mehrere weit auseinanderliegende Stellen der Tour auf einen Schlag verbessern.
-5. **Depot ausgenommen.** Wie im Original-Paper referenziert kein Zug Position 0 (das Depot) - ein anschließender
+5. **Depot ausgenommen.** In dieser Demo referenziert kein Zug Position 0 (das Depot; Entwurfsentscheidung dieser Demo) - ein anschließender
    normaler 2-opt-Aufräum-Durchgang schließt diese Lücke, damit das Ergebnis immer ein echtes 2-opt-Lokaloptimum ist.
         """
     )
@@ -395,7 +395,7 @@ st.markdown(
 |---|---|---|
 | **Die Instanz ist klein bis mittelgroß** | Bei festem 200-Tausend-Budget gewinnt Dynasearch bis 60 Stopps klar, verliert aber ab 100 Stopps knapp gegen sequentiell (9.74 % gegen 8.78 % bei 100 Stopps, 10.03 % gegen 9.56 % bei 200) - ein einzelner Dynasearch-Abstieg findet bei großen Instanzen ein leicht schlechteres Lokaloptimum als ein einzelner sequentieller. | Mehr Budget (der Umschlagpunkt verschiebt sich nach hinten, kehrt sich aber auch dann irgendwann um) |
 | **Genug Bewertungen für mehr als einen Neustart** | Bei sehr großen Instanzen und knappem Budget passt für beide Verfahren kaum ein Neustart - dann zählt nur die Güte EINES Abstiegs, nicht mehr die Effizienz-Ersparnis von Dynasearch. | (kein Nachfolger nötig - dieselbe Lehre wie bei jedem restart-basierten Stück dieser Linie) |
-| **Kein Zug referenziert das Depot** | Die DP schließt Züge, die Position 0 betreffen, bewusst aus (wie im Original-Paper) - ohne den anschließenden sequentiellen Aufräum-Durchgang wäre das Ergebnis KEIN echtes 2-opt-Lokaloptimum (geprüft, siehe Tests). | (kein Nachfolger nötig - der Aufräum-Durchgang behebt es vollständig) |
+| **Kein Zug referenziert das Depot** | Die DP schließt Züge, die Position 0 betreffen, bewusst aus (Entwurfsentscheidung dieser Demo) - ohne den anschließenden sequentiellen Aufräum-Durchgang wäre das Ergebnis KEIN echtes 2-opt-Lokaloptimum (geprüft, siehe Tests). | (kein Nachfolger nötig - der Aufräum-Durchgang behebt es vollständig) |
 | **Nur 2-opt-Züge, keine Or-opt-Kombination** | Die Unabhängigkeits-DP ist nur für 2-opt-Segmentumkehrungen hergeleitet; eine Erweiterung auf Or-opt-Züge bräuchte eine eigene Kompatibilitäts-Definition - bewusst nicht umgesetzt. | **VRP-Nachbarschaften** (inter-route-Züge; vrp-nachbarschaften-demo, gebaut) |
 """
 )
@@ -419,7 +419,7 @@ Fußabdrücke $[i,j+1]$ überlappen sich nicht) - dann ist der Gesamtgewinn addi
 \Delta(\pi,\text{Zug}_1) + \Delta(\pi,\text{Zug}_2)$.
 
 **Dynasearch-DP.** Gesucht die gewinn-maximale Menge paarweise unabhängiger, verbessernder Züge (Züge, die Position 0
-referenzieren, ausgeschlossen - wie im Original-Paper). Klassisches gewichtetes Intervall-Scheduling: $dp[p] = \max(dp[p-1],
+referenzieren, ausgeschlossen - Entwurfsentscheidung dieser Demo). Klassisches gewichtetes Intervall-Scheduling: $dp[p] = \max(dp[p-1],
 \max_{(i,j): j+2=p} dp[i] + \text{Gewinn}(i,j))$, gelöst in $O(n^2)$ (Kandidaten) statt $O(2^k)$ (Teilmengen).
 
 **Aufräum-Durchgang.** Da Dynasearch Position 0 ausschließt, garantiert die Konvergenz allein nur ein Lokaloptimum unter dieser
